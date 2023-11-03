@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Food } from "./Food";
-import { useNavigate } from 'react-router-dom';
+import ProgressCircle from "./ProgressCircle";
 
 export const Home = () => {
     const navigate = useNavigate();
@@ -89,46 +89,9 @@ export const Home = () => {
       <div className="home2">
         <div className="home2-macros">
           {/* <img src="images/Group 4.png"></img> */}
-          <svg viewBox="0 0 100 100">
-            <circle
-              stroke="gray"
-              stroke-width="5.5"
-              cx="50"
-              cy="50"
-              r="30"
-              fill="none"
-            />
-            <circle
-              strokeDashoffset={getPercentage(data?.macros_consumed?.calories, data?.meals?.breakfast?.macro_goals?.carbs + data?.meals?.dinner?.macro_goals?.carbs + data?.meals?.lunch?.macro_goals?.carbs)}
-              id="progress--circle"
-              stroke="green"
-              stroke-width="5.5"
-              cx="50"
-              cy="50"
-              r="30"
-              fill="none"
-              pathLength="100"
-            />
-            <text
-              id="progress--text"
-              x="50"
-              y="48"
-              text-anchor="middle"
-              dominant-baseline="middle"
-            >
-              {data?.macros_consumed?.calories} / {data?.meals?.breakfast?.macro_goals?.carbs + data?.meals?.dinner?.macro_goals?.carbs + data?.meals?.lunch?.macro_goals?.carbs}
-            </text>
-            <text
-              id="progress--text"
-              class="progress--text--second"
-              x="50"
-              y="55"
-              text-anchor="middle"
-              dominant-baseline="middle"
-            >
-              Calories (kcal)
-            </text>
-          </svg>
+
+         <ProgressCircle progress={30} />
+          
           <ul className="list-macros">
             <l1>
               <span className="macro-name">Carbs:</span>

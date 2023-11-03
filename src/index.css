@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.progress-circle {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(green var(--progress), rgba(0, 0, 0, 0.2) 0deg);
+  font-size: 0;
+}
+
+.progress-circle::after {
+  content: attr(data-progress) '%';
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px;
+  border-radius: 50%;
+  background: white;
+  font-size: 1rem;
+  text-align: center;
+}
