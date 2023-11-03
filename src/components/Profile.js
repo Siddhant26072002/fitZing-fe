@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -17,6 +17,30 @@ export const Profile = () =>{
      const onChange = (e) => {
         setData({...data, [e.target.name]: e.target.value})
     }
+
+    const loadProfile = async()=>{
+        try{
+            const response=await fetch('http://localhost:5000/profile',{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': localStorage.getItem('token')
+                },
+                withCredential: true
+            });
+            const json =await response.json();
+            setData({...data, name:json.name,gender:json.gender,food:json.food_preference});
+            
+            console.log(json);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(()=>{
+        loadProfile();
+    },[])
 
     const handleMedical=(event)=>{
          const clickedText = event.target.textContent;

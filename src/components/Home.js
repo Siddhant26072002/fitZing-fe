@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { Food } from "./Food";
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
+    const navigate = useNavigate();
   const [data, setData] = useState({});
   const [completed, setCompleted] = useState({});
   const [userprofile, setUserprofile] = useState({});
@@ -54,7 +55,7 @@ export const Home = () => {
     setCurrent((prev) => val);
   }, []);
 
-  const navigate = useNavigate();
+
 
   function getMealBasedOnTime() {
     const currentTime = new Date();
@@ -83,7 +84,7 @@ export const Home = () => {
     <div className="home">
       <div className="home1">
         <h4>Welcome, {userprofile?.name}!</h4>{" "}
-        <img src="images/image 1.png"></img>
+        <img onClick={()=> navigate("/profile")} src="images/image 1.png"></img>
       </div>
       <div className="home2">
         <div className="home2-macros">
