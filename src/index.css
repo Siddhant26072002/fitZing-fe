@@ -22,7 +22,7 @@ code {
 }
 
 .progress-circle::after {
-  content: attr(data-progress) '%';
+  content: attr(data-progress);
   display: flex;
   justify-content: center;
   flex-direction: column;
