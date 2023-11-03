@@ -1,11 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Food=(props) =>{
 
-  const { mealData,current,completed,setCompleted } = props;
+  const { mealData,current,completed,setCompleted,data,setData } = props;
   const markMealDone=()=>{
     setCompleted({...completed, [current]:true})
     updateMealStatus();
+  }
+
+  const [userinput,setUserinput]=useState("");
+
+  const getCustomisemeal = async()=>{
+    const response = await fetch("http://localhost:5000/customize-meal", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token')
+            },
+            withCredential: true,
+            body: JSON.stringify({ meal_time: current , user_input: userinput })
+        });
+        const json = await response.json()
+        console.log(json);
+
+        setData({...data, [data.meals[current].recipe_name]: json.recipe_name,
+       [data.meals[current].macro_goals]: json.macro_goals,
+      [data.meals[current].ingredients]: json.ingredients });
+
   }
 
   const updateMealStatus=async ()=>{
@@ -19,7 +40,7 @@ export const Food=(props) =>{
             body: JSON.stringify({ meal_time: current })
         });
         const json = await response.json()
-        console.log(json);
+        // console.log(json);
         
         
   }
@@ -44,8 +65,9 @@ export const Food=(props) =>{
                     <span className="meal-done" onClick={markMealDone}>Mark meal as done</span>
                 </div>
                 <div className="ask-ai">
-                <input type='text' placeholder="AI Chat" ></input>
-                <img className='ai' src="images/Group 6.png"></img>
+                <input type='text' placeholder="AI Chat"  value={userinput} onChange={(e) => setUserinput(e.target.value)}>
+              </input>
+                <img onClick={getCustomisemeal} className='ai' src="images/Group 6.png"></img>
                  </div></> : <img src='/images/Group 9.png'></img>}
                  </> 
   )

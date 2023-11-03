@@ -72,7 +72,7 @@ const [current,setCurrent]= useState("breakfast");
     }
 
 
-   console.log(userprofile);
+//    console.log(userprofile);
    
     return(
         <div className="home">
@@ -99,9 +99,9 @@ const [current,setCurrent]= useState("breakfast");
 
         <div className="home3">
             
-            {current==="breakfast" && <Food mealData={data?.meals?.breakfast} current={current} completed={completed} setCompleted={setCompleted}/>}
-            {current==="lunch" && <Food mealData={data?.meals?.lunch} current={current} completed={completed} setCompleted={setCompleted}/>}
-            {current==="dinner" && <Food mealData={data?.meals?.dinner} current={current} completed={completed} setCompleted={setCompleted}/>}
+            {current==="breakfast" && <Food mealData={data?.meals?.breakfast} current={current} completed={completed} setCompleted={setCompleted} data={data} setData={setData}/>}
+            {current==="lunch" && <Food mealData={data?.meals?.lunch} current={current} completed={completed} setCompleted={setCompleted} data={data} setData={setData}/>}
+            {current==="dinner" && <Food mealData={data?.meals?.dinner} current={current} completed={completed} setCompleted={setCompleted} data={data} setData={setData} />}
         </div>
         </div>
     )
