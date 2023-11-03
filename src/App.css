@@ -1,4 +1,5 @@
 * {
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,7 +16,7 @@
   min-height: 100vh;
 }
 
-.signup,.login, .profile{
+.signup,.login, .profile, .home{
   width: 80%;
   margin: 0 auto;
 }
@@ -227,5 +228,127 @@ Link{
 
 .medical-btns button:hover, .goal-btns button:hover{
   cursor: pointer;
+}
+
+
+/* home */
+
+.home{
+  
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 38px;
+}
+
+.home1{
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Inter;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0em;
+
+}
+
+.home2{
+  height: 258px;
+  border: 3px solid #FFFFFF;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.home2-macros{
+  display: flex;
+  justify-content: space-around;
+    align-items: center;
+
+}
+
+.list-macros{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.macro-name{
+  font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.macro-name,.MACROS{
+  color: #18AC00;
+  
+}
+
+.MACROS{
+  font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+}
+
+.home3{
+    border: 3px solid #FFFFFF;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 8px;
+    font-family: Inter;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px;
+      line-height: 15px;
+     
+}
+
+.name{
+  font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+
+}
+
+.green{
+  color: #18AC00;
+}
+
+.marking-buttons{
+  color: #18AC00;
+  display: flex;
+  align-items: center;
+
+  justify-content: space-around;
+}
+
+.get-complete-recipe,.meal-done{
+  border: 1px solid #18AC00;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 13px;
+}
+
+.ask-ai{
+  display: flex;
+  justify-content: space-between;
+}
+
+.ask-ai input{
+  height: 42px;
+  width: 225px;
+  padding: 3px;
+  border-radius: 1px;
 }
 

@@ -1,7 +1,10 @@
 
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 export const Profile = () =>{
+    const navigate = useNavigate();
     const [data,setData]=useState({
         name: "",
         gender: "",
@@ -32,14 +35,32 @@ export const Profile = () =>{
         setGoal(e.target.textContent)
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit= async (e)=>{
         e.preventDefault();
-        console.log('Profile submitted');
+        const response = await fetch("http://localhost:5000/update-profile", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token')
+            },
+            withCredential: true,
+            body: JSON.stringify({ name: data.name, gender: data.gender, food_preference:data.food,
+            age: data.age,current_goal: goal, medical_conditions: medical })
+        });
+        const json = await response.json()
+        console.log(json);
+        
+        if (json.message) {
+            alert("success");
+            navigate("/");
+        } else {
+            alert("Invalid Credential");
+        }
     }
   return (
     <div className='profile'>
         <div className='profile-header'>Profile</div>
-         <form onSubmit={handleSubmit} className="profile-form">
+         <div  className="profile-form">
         <input type='text' value={data.name} onChange={onChange} id='name' name='name' placeholder="Name" ></input>
         <div className='gender-age'>
         <select id="gender" name="gender" value={data.gender} onChange={onChange}>
@@ -85,9 +106,9 @@ export const Profile = () =>{
             </div>
         </div>
 
-        <button type="submit" className='signup-btn' >Update</button>
+        <button type="submit" onClick={handleSubmit} className='signup-btn' >Update</button>
 
-        </form>
+        </div>
     </div>
   )
 }

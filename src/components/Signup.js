@@ -1,8 +1,10 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 export const Signup = ()=>{
+    const navigate = useNavigate();
     const  [credentials,setCredentials]= useState({
         email: "",
         password: "",
@@ -14,7 +16,22 @@ export const Signup = ()=>{
 
     const handleSubmit= async(e)=>{
         e.preventDefault();
-        console.log('signed up');
+    
+        const response = await fetch("http://localhost:5000/signup", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({password: credentials.password,confirm_password: credentials.cpassword,
+            email: credentials.email })
+        });
+        console.log(response);
+        const json = await response.json()
+        if(json.message === 'User created'){
+            navigate("/login");
+        }else{
+            alert("Invalid Credential");
+        }
     }
 
     return(
