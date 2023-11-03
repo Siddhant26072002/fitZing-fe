@@ -90,8 +90,8 @@ export const Profile = () =>{
             <div className='medical-btns'>
                 <button onClick={handleMedical} className={medical.includes("Diabetic")===true? "highlight-medical" : ""}>Diabetic</button>
                 <button onClick={handleMedical} className={medical.includes("Lactose Intolerant")===true? "highlight-medical" : ""}>Lactose Intolerant</button>
-                <button onClick={handleMedical} className={medical.includes("ABCD")===true? "highlight-medical" : ""}>ABCD</button>
-                <button onClick={handleMedical} className={medical.includes("QWERTY")===true? "highlight-medical" : ""}>QWERTY</button>
+                <button onClick={handleMedical} className={medical.includes("ABCD")===true? "highlight-medical" : ""}>Asthma</button>
+                <button onClick={handleMedical} className={medical.includes("QWERTY")===true? "highlight-medical" : ""}>Pregnancy</button>
 
             </div>
         </div>
