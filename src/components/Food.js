@@ -2,8 +2,28 @@ import React from 'react'
 
 export const Food=(props) =>{
 
-  const { mealData,current } = props;
-//   console.log(mealData);
+  const { mealData,current,completed,setCompleted } = props;
+  const markMealDone=()=>{
+    setCompleted({...completed, [current]:true})
+    updateMealStatus();
+  }
+
+  const updateMealStatus=async ()=>{
+        const response = await fetch("http://localhost:5000/update-meal-status", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token')
+            },
+            withCredential: true,
+            body: JSON.stringify({ meal_time: current })
+        });
+        const json = await response.json()
+        console.log(json);
+        
+        
+  }
+// console.log(completed);
   return (
     <>
     <div className="MACROS">{current}</div>
@@ -19,14 +39,14 @@ export const Food=(props) =>{
                 </div>
                 <div className="name">{mealData?.recipe_name}</div>
                 <div><span className="green">Ingredients:</span> {mealData?.ingredients}</div>
-                <div className="marking-buttons">
+                {!completed[current]?<><div className="marking-buttons">
                     <span className="get-complete-recipe">Get complete recipe</span>
-                    <span className="meal-done">Mark meal as done</span>
+                    <span className="meal-done" onClick={markMealDone}>Mark meal as done</span>
                 </div>
                 <div className="ask-ai">
                 <input type='text' placeholder="AI Chat" ></input>
                 <img className='ai' src="images/Group 6.png"></img>
-                 </div>
+                 </div></> : <img src='/images/Group 9.png'></img>}
                  </> 
   )
 }

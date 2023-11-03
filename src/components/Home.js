@@ -5,6 +5,7 @@ import {Food} from './Food';
 
 export const Home = ()=>{
     const  [data,setData]= useState({})
+    const [completed,setCompleted]=useState({});
     const [userprofile,setUserprofile]=useState({})
 
 const [current,setCurrent]= useState("breakfast");
@@ -22,6 +23,7 @@ const [current,setCurrent]= useState("breakfast");
         const json = await response.json()
         
         setData(prev => json)
+        setCompleted(prev=> json.completed)
         // console.log(data)
         }
         catch(err){
@@ -70,7 +72,7 @@ const [current,setCurrent]= useState("breakfast");
     }
 
 
-   console.log(data);
+   console.log(userprofile);
    
     return(
         <div className="home">
@@ -87,15 +89,19 @@ const [current,setCurrent]= useState("breakfast");
                     </ul>
                 </div>
                 <div className="MACROS">MACROS</div>
-                <img src="images/Group 5.png"></img>
+                <div className="goal-home">
+                    <img src='images/image 2.png'></img>
+                    <span>{userprofile?.current_goal}</span>
+                </div>
+                {/* <img src="images/Group 5.png"></img> */}
                 <img src='images/Group 3 (1).png'></img>
             </div>
 
         <div className="home3">
             
-            {current==="breakfast" && <Food mealData={data?.meals?.breakfast} current={current}/>}
-            {current==="lunch" && <Food mealData={data?.meals?.lunch} current={current}/>}
-            {current==="dinner" && <Food mealData={data?.meals?.dinner} current={current}/>}
+            {current==="breakfast" && <Food mealData={data?.meals?.breakfast} current={current} completed={completed} setCompleted={setCompleted}/>}
+            {current==="lunch" && <Food mealData={data?.meals?.lunch} current={current} completed={completed} setCompleted={setCompleted}/>}
+            {current==="dinner" && <Food mealData={data?.meals?.dinner} current={current} completed={completed} setCompleted={setCompleted}/>}
         </div>
         </div>
     )

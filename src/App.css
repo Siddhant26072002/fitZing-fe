@@ -352,3 +352,16 @@ Link{
   border-radius: 1px;
 }
 
+.goal-home{
+  display: flex;
+  gap: 7px;
+}
+
+.goal-home span{
+font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  align-self: center;
+  /* text-align: center; */
+}
