@@ -90,7 +90,7 @@ export const Home = () => {
           {/* <img src="images/Group 4.png"></img> */}
           <svg viewBox="0 0 100 100">
             <circle
-              stroke="green"
+              stroke="gray"
               stroke-width="5.5"
               cx="50"
               cy="50"
@@ -100,7 +100,7 @@ export const Home = () => {
             <circle
               strokeDashoffset={getPercentage(data?.macros_consumed?.calories, data?.meals?.breakfast?.macro_goals?.carbs + data?.meals?.dinner?.macro_goals?.carbs + data?.meals?.lunch?.macro_goals?.carbs)}
               id="progress--circle"
-              stroke="#28411B"
+              stroke="green"
               stroke-width="5.5"
               cx="50"
               cy="50"
