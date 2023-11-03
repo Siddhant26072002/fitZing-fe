@@ -87,7 +87,7 @@ export const Home = () => {
       </div>
       <div className="home2">
         <div className="home2-macros">
-          <img src="images/Group 4.png"></img>
+          {/* <img src="images/Group 4.png"></img> */}
           <svg viewBox="0 0 100 100">
             <circle
               stroke="green"
