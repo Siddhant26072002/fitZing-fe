@@ -191,9 +191,16 @@ Link{
 
 }
 
+.height,.weight{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
 
 
-#gender, #age{
+
+#gender, #age,#height,#weight{
   width: 128px;
  border-radius: 3px;
   border: 1px;

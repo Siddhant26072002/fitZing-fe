@@ -39,7 +39,8 @@ export const Profile = () =>{
                 setIsprofile(true);
             }
             console.log(json,'json');
-            setData({...data, name:json.name,gender:json.gender,food:json.food_preference,age:json.age});
+            setData({...data, name:json.name,gender:json.gender,food:json.food_preference,age:json.age,
+            height:json.height,weight:json.weight});
             setMedical(json.medical_conditions);
             setGoal(json.current_goal);
 
@@ -81,7 +82,7 @@ export const Profile = () =>{
             },
             withCredential: true,
             body: JSON.stringify({ name: data.name, gender: data.gender, food_preference:data.food,
-            age: data.age,current_goal: goal, medical_conditions: medical })
+            age: data.age,height: data.height,weight: data.weight,current_goal: goal, medical_conditions: medical })
         });
         const json = await response.json()
         console.log(json);
@@ -141,30 +142,30 @@ export const Profile = () =>{
         </div>
 
         <div className="gender-age">
-          <select
-            id="weight"
-            name="weight"
-            value={data.gender}
-            onChange={onChange}
-          >
-            <option value="" disabled selected>
-              Weight
-            </option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-          <select id="age" name="age" value={data.age} onChange={onChange}>
-            <option value="" disabled selected>
-              Age
-            </option>
-            <option value="<16">&lt;16</option>
-            <option value="16-21">16-21</option>
-            <option value="21-30">21-30</option>
-            <option value="31-40">31-40</option>
-            <option value="41-50">41-50</option>
-            <option value=">50">&gt;50</option>
-          </select>
+          <div className="height">
+            <label for="height">Height:</label>
+         
+            <input
+              type="number"
+              value={data.height}
+              onChange={onChange}
+              id="height"
+              name="height"
+              placeholder="enter in cms"
+            ></input>
+          </div>
+
+          <div className="weight">
+            <label for="weight">Weight:</label>
+            <input
+              type="number"
+              value={data.weight}
+              onChange={onChange}
+              id="weight"
+              name="weight"
+              placeholder="enter in kgs"
+            ></input>
+          </div>
         </div>
 
         <select id="food" name="food" value={data.food} onChange={onChange}>
