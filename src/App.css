@@ -167,7 +167,7 @@ Link{
     font-size: 22px;
     font-weight: 700;
     line-height: 27px;
-  margin-top: 83px;
+  margin-top: 30px;
     text-align: left;
     margin-bottom: 27px;
 }
@@ -176,7 +176,7 @@ Link{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 #name{
