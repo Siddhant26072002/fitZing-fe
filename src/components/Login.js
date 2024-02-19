@@ -27,6 +27,7 @@ export const Login = ()=>{
         if (json.user_id) {
             localStorage.setItem('token', json.auth_token);
             localStorage.setItem('userid', json.user_id);
+        
             if(json.is_profile_created){
                  navigate("/home");
             }

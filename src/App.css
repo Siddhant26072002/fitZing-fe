@@ -16,7 +16,7 @@
   min-height: 100vh;
 }
 
-.signup,.login, .profile, .home{
+.signup,.login, .profile, .home, .report{
   width: 80%;
   margin: 0 auto;
 }
@@ -228,6 +228,11 @@ Link{
 
 .medical-btns button:hover, .goal-btns button:hover{
   cursor: pointer;
+}
+
+.back-button{
+  margin-top: 20px;
+  margin-right: 250px;
 }
 
 

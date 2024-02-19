@@ -6,6 +6,7 @@ import { Signup } from './components/Signup';
 import { Landing } from './components/Landing';
 import { Profile } from './components/Profile';
 import { Home} from './components/Home';
+// import {Report} from './components/Report';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/profile' element={<Profile />} />
           <Route exact path='/home' element={<Home />} />
+          {/* <Route exact path='/report' element={<Report />} /> */}
         </Routes>
       </Router>
     </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Food } from "./Food";
 import { useNavigate } from 'react-router-dom';
 import ProgressCircle from "./ProgressCircle";
-
+ 
 export const Home = () => {
     const navigate = useNavigate();
   const [data, setData] = useState({});
@@ -78,7 +78,7 @@ export const Home = () => {
         return 0;
     }
 
-    return numerator * 1.0 / totalCalorie;
+    return (numerator * 1.0 / totalCalorie)*100;
   }
 
   return (
