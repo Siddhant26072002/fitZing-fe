@@ -6,7 +6,7 @@ export const Food = (props) => {
     setCompleted({ ...completed, [current]: true });
     updateMealStatus();
   };
-
+  
   const [userinput, setUserinput] = useState("");
 
   const getCustomisemeal = async () => {
@@ -49,7 +49,7 @@ export const Food = (props) => {
     <>
       <div className="MACROS">{current}</div>
       <div className="home2-macros">
-        <img src="images/Image 4.png"></img>
+        <img src={data.img_url ? data.img_url : "images/Image 4.png"}></img>
         <ul className="list-macros">
           <l1>
             <span className="macro-name">Macros</span>
