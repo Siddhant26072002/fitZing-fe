@@ -60,8 +60,9 @@ export const Food=(props) =>{
                 </div>
                 <div className="name">{mealData?.recipe_name}</div>
                 <div><span className="green">Ingredients:</span> {mealData?.ingredients}</div>
+                <div><span className="green">Recipe:</span> {mealData?.recipe_instructions}</div>
                 {!completed[current]?<><div className="marking-buttons">
-                    <span className="get-complete-recipe">Get complete recipe</span>
+                    {/* <span className="get-complete-recipe">Get complete recipe</span> */}
                     <span className="meal-done" onClick={markMealDone}>Mark meal as done</span>
                 </div>
                 <div className="ask-ai">
