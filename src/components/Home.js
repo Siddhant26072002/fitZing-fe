@@ -85,22 +85,36 @@ export const Home = () => {
     <div className="home">
       <div className="home1">
         <h4>Welcome, {userprofile?.name}!</h4>{" "}
-        <img onClick={()=> navigate("/profile")} src="images/image 1.png"></img>
+        <div className="report-profile">
+          <img
+            onClick={() => navigate("/report")}
+            src="images/images 1.png"
+          ></img>
+          <img
+            onClick={() => navigate("/profile")}
+            src="images/image 1.png"
+          ></img>
+        </div>
       </div>
       <div className="home2">
         <div className="home2-macros">
           {/* <img src="images/Group 4.png"></img> */}
 
-         <ProgressCircle progress={getPercentage(data?.macros_consumed?.calories, data?.meals?.breakfast?.macro_goals?.calories +
+          <ProgressCircle
+            progress={getPercentage(
+              data?.macros_consumed?.calories,
+              data?.meals?.breakfast?.macro_goals?.calories +
                 data?.meals?.dinner?.macro_goals?.calories +
-                data?.meals?.lunch?.macro_goals?.calories)} 
-            totalCalories={data?.meals?.breakfast?.macro_goals?.calories +
-                data?.meals?.dinner?.macro_goals?.calories +
-                data?.meals?.lunch?.macro_goals?.calories}
+                data?.meals?.lunch?.macro_goals?.calories
+            )}
+            totalCalories={
+              data?.meals?.breakfast?.macro_goals?.calories +
+              data?.meals?.dinner?.macro_goals?.calories +
+              data?.meals?.lunch?.macro_goals?.calories
+            }
             caloriesAchieved={data?.macros_consumed?.calories}
-                
-        />
-          
+          />
+
           <ul className="list-macros">
             <l1>
               <span className="macro-name">Carbs:</span>
