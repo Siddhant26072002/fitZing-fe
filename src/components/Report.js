@@ -3,29 +3,29 @@ import { useNavigate } from "react-router-dom";
 import Linegraph from "./Linegraph";
 
 export const Report = () => {
-  
+
   const navigate = useNavigate();
-  
-  const [data,setData]=useState();
-  const [currentgraphData,setCurrentgraphData]=useState({
-    data1:[],
-    data2:[],
-    label:[]
+
+  const [data, setData] = useState();
+  const [currentgraphData, setCurrentgraphData] = useState({
+    data1: [],
+    data2: [],
+    label: []
   });
-  const [category,setCategory] = useState("calorie");
+  const [category, setCategory] = useState();
 
   const onChange = (e) => {
     setCategory(e.target.value);
   };
 
   useEffect(() => {
-    if(data){
-    const val={
-      label: data[`dates`],
-      data1: data[`${category}_hits`],
-      data2: data[`${category}_targets`]
-    }
-    setCurrentgraphData(val);
+    if (data) {
+      const val = {
+        label: data[`dates`],
+        data1: data[`${category}_hits`],
+        data2: data[`${category}_targets`]
+      }
+      setCurrentgraphData(val);
     }
     console.log(currentgraphData);
   }, [category]);
@@ -43,14 +43,15 @@ export const Report = () => {
         withCredential: true,
       });
       const json = await response.json();
-      
-     
-      setData(json);
-    
-      console.log(json,"json");
-    console.log(data);
 
-    
+
+      setData(json);
+      setCategory("calorie");
+
+      console.log(json, "json");
+      console.log(data);
+
+
     } catch (err) {
       console.log(err);
     }
@@ -82,10 +83,8 @@ export const Report = () => {
             value={category}
             onChange={onChange}
           >
-            <option value="" disabled selected>
-              Category
-            </option>
-            <option value="calorie">calorie</option>
+            <option value="" disabled>Category</option>
+            <option value="calorie" selected>calorie</option>
             <option value="protein">protein</option>
             <option value="fats">fats</option>
             <option value="carbs">carbs</option>
