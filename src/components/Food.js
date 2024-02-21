@@ -6,8 +6,10 @@ export const Food = (props) => {
     setCompleted({ ...completed, [current]: true });
     updateMealStatus();
   };
+  const [showRecipeinst, setShowRecipeinst] = useState(false);
 
   const [userinput, setUserinput] = useState("");
+  console.log("mealdata", mealData?.recipe_instructions);
 
   const getCustomisemeal = async () => {
     const response = await fetch("http://localhost:5000/customize-meal", {
@@ -45,11 +47,19 @@ export const Food = (props) => {
     // console.log(json);
   };
   // console.log(completed);
+
+  function toggleRecipeInst() {
+    setShowRecipeinst((prev) => !prev);
+  }
+
   return (
     <>
       <div className="MACROS">{current}</div>
       <div className="home2-macros">
-        <img className="food-image" src={mealData?.img_url ? mealData.img_url : "images/Image 4.png"}></img>
+        <img
+          className="food-image"
+          src={mealData?.img_url ? mealData.img_url : "images/Image 4.png"}
+        ></img>
         <ul className="list-macros">
           <l1>
             <span className="macro-name">Macros</span>
@@ -67,17 +77,29 @@ export const Food = (props) => {
       {!completed[current] ? (
         <>
           <div className="marking-buttons">
-            <span className="get-complete-recipe">Get complete recipe</span>
+            <button className="get-complete-recipe" onClick={toggleRecipeInst}>
+              {showRecipeinst
+                ? `Hide Recipe Instructions`
+                : `Get complete recipe`}
+            </button>
             <span className="meal-done" onClick={markMealDone}>
               Mark meal as done
             </span>
           </div>
+          {showRecipeinst && mealData && (
+            <p> {mealData?.recipe_instructions} </p>
+          )}
           <div className="ask-ai">
             <input
               type="text"
               placeholder="AI Chat"
               value={userinput}
               onChange={(e) => setUserinput(e.target.value)}
+              style={{
+                border: "1px solid green",
+                borderRadius: "7px",
+                padding: "5px",
+              }}
             ></input>
             <img
               onClick={getCustomisemeal}
