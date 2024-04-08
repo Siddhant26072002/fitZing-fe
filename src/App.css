@@ -213,6 +213,10 @@ Link{
     padding: 5px;
 }
 
+.food-image{
+  width: 75%;
+}
+
 .medical-header, .goal-header{
     text-align: left;
 }

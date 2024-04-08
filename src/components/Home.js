@@ -7,6 +7,7 @@ import ProgressCircle from "./ProgressCircle";
 export const Home = () => {
     const navigate = useNavigate();
   const [data, setData] = useState({});
+  console.log('data',data);
   const [completed, setCompleted] = useState({});
   const [userprofile, setUserprofile] = useState({});
 
